@@ -22,3 +22,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::put('/sections/{section}', [SectionController::class, 'update'])->name('admin.sections.update');
 });
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
