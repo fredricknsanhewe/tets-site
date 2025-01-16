@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\SectionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::get('/sections', [SectionController::class, 'index'])->name('admin.sections.index');
+    Route::get('/sections/{section}/edit', [SectionController::class, 'edit'])->name('admin.sections.edit');
+    Route::put('/sections/{section}', [SectionController::class, 'update'])->name('admin.sections.update');
+});
+
