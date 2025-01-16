@@ -5,7 +5,7 @@
     <h1>Manage Sections</h1>
     <table class="table">
         <thead>
-            <tr>
+            <tr> 
                 <th>Name</th>
                 <th>Actions</th>
             </tr>
