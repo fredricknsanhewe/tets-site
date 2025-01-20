@@ -1,5 +1,8 @@
 <?php
-use Illuminate\Database\seeder;
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 class SectionsTableSeeder extends Seeder
@@ -18,6 +21,6 @@ class SectionsTableSeeder extends Seeder
             ])],
             ['name' => 'contact', 'content' => null],
         ]);
+        
     }
 }
-?>

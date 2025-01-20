@@ -15,19 +15,41 @@ class SectionController extends Controller
 
     public function edit(Section $section)
     {
-        return view('admin.sections.edit', compact('section'));
+        return view('admin.sections.edit',compact('section'));
+    }
+
+    public function create()
+    {
+        return view('admin.sections.create');
     }
 
     public function update(Request $request, Section $section)
-    {
-        $request->validate([
-            'content' => 'required',
-        ]);
+{
+    // Save the updated features back as JSON
+    $section->content = json_encode($request->content);
+    $section->save();
 
-        $section->content = $request->content;
-        $section->save();
+    return redirect()->route('admin.sections.index')->with('success', 'Section updated successfully.');
+}
+public function store(Request $request)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'content' => 'required|array',
+    ]);
 
-        return redirect()->route('admin.sections.index')->with('success', 'Section updated successfully.');
+    $contentArray = [];
+    foreach ($request->content as $item) {
+        $contentArray[$item['key']] = $item['value'];
     }
+
+    Section::create([
+        'name' => $request->name,
+        'content' => json_encode($contentArray),
+    ]);
+
+    return redirect()->route('admin.sections.index')->with('success', 'Section created successfully.');
+}
+
 }
 ?>
