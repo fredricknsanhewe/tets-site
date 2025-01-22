@@ -1,3 +1,9 @@
+@php
+    use App\Models\Section;
+    $sections = Section::all()->keyBy('name')->filter(function ($section) {
+        return $section->name == 'contact';
+    });
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +42,17 @@
                         <li class="nav-item"><a class="nav-link" href="/#services">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
                     </ul>
-                    <a href="/login" class="btn btn-primary ms-lg-3">Admin</a>
+                    <a href="/login" class="btn btn-primary ms-lg-3">
+                        @guest
+                        Login
+                        @endguest
+                        @auth
+                        Admin
+                        @endauth
+                    </a>
+                    @auth
+                    <a href="/logout" class="btn btn-danger ms-lg-3">Log Out</a>
+                    @endauth
                 </div>
             </div>
         </nav>
@@ -70,18 +86,21 @@
 </script>
 </main>
 <footer id="footer" class="p-5 bg-white shadow">
+@php
+    $contact = isset($sections['contact']) ? json_decode($sections['contact']->content, true) : null;
+@endphp
     <div class="container container-fluid text-left d-flex flex-colum">
         <div class="col-3 d-flex flex-colum">
             <div class="flex-column">
                 <div><h3>My Website</h3></div>
                 <div>
                     <div>
-                        <address>123 abd Store</address>    
-                        <address>Zimbabwe</address>
+                        <address>{{$contact['address']??'Sample Address 123'}}</address>    
+                        <address>{{$contact['country']??'Zimbabwe'}}</address>
                     </div>
                     <div>
-                        <div><b>Phone:</b>+263777111222</div>
-                        <div><b>Email:</b>admin@abc.com</div>
+                        <div><b>Phone:</b>{{$contact['phone1']??'#phone'}}</div>
+                        <div><b>Email:</b>{{$contact['email1']??'#email'}}</div>
                     </div>
                 </div>
             </div>

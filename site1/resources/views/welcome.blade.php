@@ -17,7 +17,7 @@
                     <h1 class="text-dark">{{ $hero['heading']??'Heading' }}</h1>
                     <h3 class="text-primary">{{ $hero['subheading']??'Sub Heading' }}</h3>
                 </div>
-                <button class="btn btn-primary rounded-pill">Get Started</button>
+                <button class="btn btn-primary rounded-pill" onclick="window.open('/login','_self')">Get Started</button>
                 <button class="btn btn-default"><b><i class="bi bi-play-circle"></i>Play Video</b></button>
             </div>
             <div class="float-right col-lg-4 col-md-9 ">
@@ -28,41 +28,41 @@
 
     <section class="p-5" id="about">
         @php 
-            //$about = isset($sections['hero']) ? json_decode($sections['hero']->content, true) : null;
+            $about = isset($sections['about']) ? json_decode($sections['about']->content, true) : null;
+            $contact = isset($sections['contact']) ? json_decode($sections['contact']->content, true) : null;
         @endphp
         <div class="d-flex flex-row flex-wrap justify-content-between pb-5">
             <div class="float-left align-self-center col-lg-7 col-md-9">
                 <div class="text-left ">
                     <p class="text-primary"><b>MORE ABOUT US</b></p>
-                    <h2 class="text-dark">Heading</h2>
-                    <p class="text-dark">lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
-                        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+                    <h2 class="text-dark">{{$about['heading']??'Heading'}}</h2>
+                    <p class="text-dark">{{$about['text']??'#text'}} </p>
                 </div>
                 <div class="d-flex flex-row justify-content-around pb-5">
                     <div class="row flex-column">
-                        <span class="col"><i class="bi bi-check-circle-fill text-primary"></i>Lorem ipsum 1</span>
-                        <span class="col"><i class="bi bi-check-circle-fill text-primary"></i>Lorem ipsum 2</span>
-                        <span class="col"><i class="bi bi-check-circle-fill text-primary"></i>Lorem ipsum 3</span>
+                        <span class="col"><i class="bi bi-check-circle-fill text-primary"></i>{{$about['feature1']??'#Feature'}}</span>
+                        <span class="col"><i class="bi bi-check-circle-fill text-primary"></i>{{$about['feature2']??'#Feature'}}</span>
+                        <span class="col"><i class="bi bi-check-circle-fill text-primary"></i>{{$about['feature3']??'#Feature'}}</span>
                     </div>
                     <div class="row flex-column">
-                        <span class="col"><i class="bi bi-check-circle-fill text-primary"></i>Lorem ipsum 4</span>
-                        <span class="col"><i class="bi bi-check-circle-fill text-primary"></i>Lorem ipsum 5</span>
-                        <span class="col"><i class="bi bi-check-circle-fill text-primary"></i>Lorem ipsum 6</span>
+                        <span class="col"><i class="bi bi-check-circle-fill text-primary"></i>{{$about['feature4']??'#Feature'}}</span>
+                        <span class="col"><i class="bi bi-check-circle-fill text-primary"></i>{{$about['feature5']??'#Feature'}}</span>
+                        <span class="col"><i class="bi bi-check-circle-fill text-primary"></i>{{$about['feature6']??'#Feature'}}</span>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between small">
                     <div class="col-lg-7 d-flex flex-row">
                         <img src="img/img1.webp" class=""  style="border-radius: 50%;width: 40px;height:40px">
                         <div class="d-flex flex-column">
-                            <span>Maria Smith</span>
+                            <span>{{$about['ceo-name']??'#CEO'}}</span>
                             <span class="text-primary">CEO & Founder</span>
                         </div>
                     </div>
                     <div class="col-lg-7 d-flex flex-row shadow p-3 rounded bg-white">
                         <span class="text-primary bi bi-telephone-fill" style="font-size:2em"></span>
                         <div class="d-flex flex-column">
-                            <span>Cal us anytime</span>
-                            <span class="text-primary">+263777111222</span>
+                            <span>Call us anytime</span>
+                            <span class="text-primary">{{$contact['phone2']??'#phone'}}</span>
                         </div>
                     </div>
                 </div>
@@ -272,7 +272,7 @@
     
     <section id="contact" class="p-5">
         @php 
-            //$contact = isset($sections['hero']) ? json_decode($sections['hero']->content, true) : null;
+            $contact = isset($sections['contact']) ? json_decode($sections['contact']->content, true) : null;
         @endphp
         <div class="d-flex flex-column flex-wrap justify-content-between pb-5">
             <div class="d-flex flex-column text-center align-content-center align-self-center">
@@ -291,24 +291,24 @@
                             <div class="col-lg-2 p-4"><i class="bi bi-geo-alt text-light" style="font-size:2em;width: 60px;height:60px"></i></div>
                             <div class="flex-column text-left">
                                 <h3>Our Location</h3>
-                                <address>ABC 23 street</address>
-                                <address>Harare</address>
+                                <address>{{$contact['address']??'Sample Address 123'}}</address>
+                                <address>{{$contact['country']??'Zimbabwe'}}</address>
                             </div>
                         </div>
                         <div class="d-flex flex-row flex-wrap ps-5">
                             <div class="col-lg-2 p-4"><i class="bi bi-telephone text-light" style="font-size:2em;width: 60px;height:60px"></i></div>
                             <div class="flex-column text-left">
                                 <h3>Phone Number</h3>
-                                <div>+263777111222</div>
-                                <div>+263722222222</div>
+                                <div>{{$contact['phone1']??'#phone1'}}</div>
+                                <div>{{$contact['phone2']??'#phone2'}}</div>
                             </div>
                         </div>
                         <div class="d-flex flex-row flex-wrap ps-5">
                             <div class="col-lg-2 p-4"><i class="bi bi-envelope text-light" style="font-size:2em;width: 60px;height:60px"></i></div>
                             <div class="flex-column text-left">
                                 <h3>Email <Address></Address></h3>
-                                <div>info@abc.com</div>
-                                <div>admin@abc.com</div>
+                                <div>{{$contact['email1']??'#email1'}}</div>
+                                <div>{{$contact['email2']??'#email2'}}</div>
                             </div>
                         </div>
                     </div>
@@ -343,24 +343,5 @@
                     </div>
             </div>
         </div>
-    </section>
-
-
-    <!-- Features Section -->
-    <section class="p-5" id="features">
-        @php 
-            $features = isset($sections['features']) ? json_decode($sections['features']->content, true) : null;
-        
-        @endphp
-        @if($features)
-            @foreach ($features as $key =>$feature)
-                <div class="feature-item">
-                    <h4>{{ $feature['title'] }}</h4>
-                    <p>{{ $feature['description'] }}</p>
-                </div>
-            @endforeach
-        @else
-            <p>Features section content is not available.</p>
-        @endif
     </section>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Section;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SectionController extends Controller
 {
@@ -12,7 +13,13 @@ class SectionController extends Controller
         $sections = Section::all();
         return view('admin.sections.index', compact('sections'));
     }
-
+    public function logout(Request $request){
+        // Log the user out of the application
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login')->with('success', 'You have been logged out successfully.');
+    }
     public function edit(Section $section)
     {
         return view('admin.sections.edit',compact('section'));
