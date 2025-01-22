@@ -75,115 +75,47 @@
     
     <section class="p-5" id="testimonials" class="m-5 p-5" style="background-color:rgba(80, 155, 255,0.2)">
         @php 
-            //$testimonials = isset($sections['hero']) ? json_decode($sections['hero']->content, true) : null;
+            $testimonials = isset($sections['testimonials']) ? json_decode($sections['testimonials']->content, true) : null;
         @endphp
         <div class="d-flex flex-column flex-wrap justify-content-between pb-5">
             <div class="d-flex flex-column text-center align-content-center align-self-center">
                 <h3>Testimonials</h3>
                 <hr class="align-self-center" style="width:40px;height:4px;border:none;color:#0000ff;background-color:#00f;">
-                <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </p>
+                <p>These are the testimonials from some of our clients who where satisfied with out work</p>
             </div>
             <div class="d-flex flex-row flex-wrap justify-content-between">
-            <div class="col-5 shadow bg-white rounded mb-5 me-1">
-                    <div class="d-flex flex-column">
-                        <div class="d-flex flex-row">
-                            <img src="img/img1.webp" class=""  style="border-radius: 50%;width: 60px;height:60px">
-                            <div class="d-flex flex-column">
-                                <span>Maria Smith</span>
-                                <span class="small">CEO & Founder</span>
-                                <div>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>                                    
+                @for($i=0;$i<count($testimonials);$i++)
+                    <div class="col-5 shadow bg-white rounded mb-5 me-1">
+                        <div class="d-flex flex-column">
+                            <div class="d-flex flex-row">
+                                <img src="img/img1.webp" class=""  style="border-radius: 50%;width: 60px;height:60px">
+                                <div class="d-flex flex-column">
+                                    <span>{{$testimonials[$i]['name']??'#name'}}</span>
+                                    <span class="small">{{$testimonials[$i]['position']??'#position'}}</span>
+                                    <div>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>                                    
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="container">
-                            <span class="display-1 text-primary">“</span>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores tempore numquam cum temporibus, facilis accusantium quae veritatis esse, corporis laboriosam accusamus deserunt! Quisquam quas illum voluptates! Tenetur porro et repudiandae.
-                            <span class="display-1 text-primary">”</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-5 shadow bg-white rounded mb-5 me-1">
-                    <div class="d-flex flex-column">
-                        <div class="d-flex flex-row">
-                            <img src="img/img1.webp" class=""  style="border-radius: 50%;width: 60px;height:60px">
-                            <div class="d-flex flex-column">
-                                <span>Maria Smith</span>
-                                <span class="small">CEO & Founder</span>
-                                <div>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>                                    
-                                </div>
+                            <div class="container">
+                                <span class="display-1 text-primary">“</span>
+                                <p>{{$testimonials[$i]['quote']??'#testimony'}}</p>
+                                <span class="display-1 text-primary">”</span>
                             </div>
                         </div>
-                        <div class="container">
-                            <span class="display-1 text-primary">“</span>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores tempore numquam cum temporibus, facilis accusantium quae veritatis esse, corporis laboriosam accusamus deserunt! Quisquam quas illum voluptates! Tenetur porro et repudiandae.
-                            <span class="display-1 text-primary">”</span>
-                        </div>
                     </div>
-                </div>
-                <div class="col-5 shadow bg-white rounded mb-5 me-1">
-                    <div class="d-flex flex-column">
-                        <div class="d-flex flex-row">
-                            <img src="img/img1.webp" class=""  style="border-radius: 50%;width: 60px;height:60px">
-                            <div class="d-flex flex-column">
-                                <span>Maria Smith</span>
-                                <span class="small">CEO & Founder</span>
-                                <div>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <span class="display-1 text-primary">“</span>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores tempore numquam cum temporibus, facilis accusantium quae veritatis esse, corporis laboriosam accusamus deserunt! Quisquam quas illum voluptates! Tenetur porro et repudiandae.
-                            <span class="display-1 text-primary">”</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-5 shadow bg-white rounded mb-5 me-1">
-                    <div class="d-flex flex-column">
-                        <div class="d-flex flex-row">
-                            <img src="img/img1.webp" class=""  style="border-radius: 50%;width: 60px;height:60px">
-                            <div class="d-flex flex-column">
-                                <span>Maria Smith</span>
-                                <span class="small">CEO & Founder</span>
-                                <div>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <span class="display-1 text-primary">“</span>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores tempore numquam cum temporibus, facilis accusantium quae veritatis esse, corporis laboriosam accusamus deserunt! Quisquam quas illum voluptates! Tenetur porro et repudiandae.
-                            <span class="display-1 text-primary">”</span>
-                        </div>
-                    </div>
-                </div>
-                
+                @endfor
             </div>
         </div>
     </section>
 
     <section class="p-5 bg-info" id="calltoaction" class="m-5 p-5">
         @php 
-            //$calltoaction = isset($sections['hero']) ? json_decode($sections['hero']->content, true) : null;
+            $services = isset($sections['services']) ? json_decode($sections['services']->content, true) : null;
         @endphp
         <div class="d-flex flex-column flex-wrap justify-content-between pb-5">
             <div class="d-flex flex-column text-center align-content-center align-self-center">
@@ -199,73 +131,39 @@
 
     <section class="p-5" id="services" class="m-5 p-5">
         @php 
-            //$services = isset($sections['hero']) ? json_decode($sections['hero']->content, true) : null;
+            $services = isset($sections['services']) ? json_decode($sections['services']->content, true) : null;
         @endphp
         <div class="d-flex flex-column flex-wrap justify-content-between pb-5">
             <div class="d-flex flex-column text-center align-content-center align-self-center">
-                <h3>Services</h3>
+                <h3>{{$services[0]['title']??'Title Here'}}</h3>
                 <hr class="align-self-center" style="width:40px;height:4px;border:none;color:#0000ff;background-color:#00f;">
-                <p>Consequatur molestiae dicta accusamus quo nobis quae aperiam.</p>
+                <p>{{$services[0]['description']??'#description'}}</p>
             </div>
             <div class="d-flex flex-row flex-wrap container">
                 <div class="row text-center">
-                    <div class="d-flex flex-row col-lg-6 shadow p-3 bg-white">
-                        <div class="col-lg-1"><i class="bi bi-activity text-primary bg-info rounded" style="font-size:1.4em;"></i></div>
-                        <div class="col-lg-9">
-                            <div class="accordion">
-                                <span>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam corrupti 
-                                </span>
-                                <span id="collapse1" class="collapse">
-                                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet quasi reiciendis harum quibusdam tempore commodi! Voluptatem recusandae incidunt accusamus expedita.</span>
-                                </span>
-                            </div>
-                            <span class="SeeMore2 text-primary" data-id="collapse1">Read More<i class="bi bi-arrow-right"></i></span>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row col-lg-6 shadow p-3 bg-white">
-                        <div class="col-lg-1"><i class="bi bi-diagram-3 text-primary bg-info rounded" style="font-size:1.4em;"></i></div>
-                        <div class="col-lg-9">
-                            <div class="accordion">
+                    @php
+                    $cnt=0;
+                    foreach ($services as $service){
+                        $cnt++;
+                    @endphp
+                        <div class="d-flex flex-row col-lg-6 shadow p-3 bg-white">
+                            <div class="col-lg-1"><i class="bi bi-activity text-primary bg-info rounded" style="font-size:1.4em;"></i></div>
+                            <div class="col-lg-9">
+                                <div class="accordion">
                                     <span>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam corrupti 
+                                    {{substr($service['description'],0,50)??'#description'}}
                                     </span>
-                                    <span id="collapse2" class="collapse">
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet quasi reiciendis harum quibusdam tempore commodi! Voluptatem recusandae incidunt accusamus expedita.</span>
+                                    <span id="collapse{{$cnt}}" class="collapse">
+                                        <span>{{substr($service['description'],50)??'#description'}}</span>
                                     </span>
+                                </div>
+                                <span class="SeeMore2 text-primary" data-id="collapse{{$cnt}}">Read More<i class="bi bi-arrow-right"></i></span>
                             </div>
-                            <span class="SeeMore2 text-primary" data-id="collapse2">Read More<i class="bi bi-arrow-right"></i></span>
                         </div>
-                    </div>
-                    <div class="d-flex flex-row col-lg-6 shadow p-3 bg-white">
-                        <div class="col-lg-1"><i class="bi bi-easel text-primary bg-info rounded" style="font-size:1.4em;"></i></div>
-                        <div class="col-lg-9">
-                            <div class="accordion">
-                                    <span>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam corrupti Lorem ipsum dolor sit amet consectetur
-                                    </span>
-                                    <span id="collapse3" class="collapse">
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet quasi reiciendis harum quibusdam tempore commodi! Voluptatem recusandae incidunt accusamus expedita.</span>
-                                    </span>
-                            </div>
-                            <span class="SeeMore2 text-primary" data-id="collapse3">Read More<i class="bi bi-arrow-right"></i></span>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row col-lg-6 shadow p-3 bg-white">
-                        <div class="col-lg-1"><i class="bi bi-clipboard-data text-primary bg-info rounded" style="font-size:1.4em;"></i></div>
-                        <div class="col-lg-9">
-                            <div class="accordion">
-                                    <span>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam corrupti                                    </span>
-                                    <span id="collapse4" class="collapse">
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet quasi reiciendis harum quibusdam tempore commodi! Voluptatem recusandae incidunt accusamus expedita.</span>
-                                    </span>
-                            </div>
-                            <span class="SeeMore2 text-primary" data-id="collapse4">Read More<i class="bi bi-arrow-right"></i></span>
-                        </div>
-                    </div>
+                    @php
+                    }
+                    @endphp
                 </div>
-            </div>
             </div>
         </div>
     </section>

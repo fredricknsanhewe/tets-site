@@ -17,6 +17,5 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::post('/sections/store', [SectionController::class, 'store'])->name('admin.sections.store');
     Route::get('/sections/create', [SectionController::class, 'create'])->name('admin.sections.create');
 });
-
-
+Route::resource('user', 'UserController');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
