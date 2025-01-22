@@ -17,5 +17,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::post('/sections/store', [SectionController::class, 'store'])->name('admin.sections.store');
     Route::get('/sections/create', [SectionController::class, 'create'])->name('admin.sections.create');
 });
-Route::resource('user', 'UserController');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register')->middleware('auth');
+Route::post('register', [App\Http\Controllers\Auth\RegisterController::class,'register'])->middleware('auth');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
